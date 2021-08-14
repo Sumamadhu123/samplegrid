@@ -1,7 +1,75 @@
 <html>
-  <head></head>
-  <style></style>
-  <body>
-    <h1>Hello Sumamadhu</h1>
-  </body>
+<head>
+    <title>BookDataSolutions</title>
+    <style>
+        header {
+            grid-area: header;
+            border:1px solid black;
+        }
+        menu {
+            grid-area: menu;
+            border:1px solid black;
+        }
+        nav {
+            grid-area: nav;
+            border:1px solid black;
+        }
+        main {
+            grid-area: main;
+            border:1px solid black;
+        }
+        footer {
+            grid-area: footer;
+            border:1px solid black;
+        }
+        .grid-container {
+            display:grid;
+            grid-gap:0px;
+            grid-template-columns:.5fr 4fr;
+            grid-template-areas:'menu header' 'nav main' 'nav footer';
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function ($) {
+            $("menu a").click(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $("nav").toggle();
+                if ($(this).text() === "\u26CC") {
+                    $(this).text("\u2630");
+                    $(".grid-container").css({ "grid-template-areas": "'menu header' 'nav main' 'nav footer'" });
+                }
+                else {
+                    $(this).text("\u26CC");
+                    $(".grid-container").css({ "grid-template-areas": "'menu header' 'main main' 'footer footer'" });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="grid-container">
+        <menu>
+            <a href="#">&#9776;</a>
+        </menu>
+        <header>
+            <h1>BookDataSolutions</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Work Queue</a></li>
+                <li><a href="#">FTP Sites</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h3>Main Window</h3>
+        </main>
+        <footer>
+            <div><span id="copyright">&copy; Copyright Bookdatasolutions 2018</span></div>
+        </footer>
+    </div>
+</body>
 </html>
